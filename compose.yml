@@ -1,0 +1,20 @@
+services:
+  jobmatcher:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: true
+    environment:
+      SERVER_HOST: 0.0.0.0
+      SERVER_PORT: 8000
+      REPORT_DIR: /opt/jobmatcher/reports
+    volumes:
+      - reports:/opt/jobmatcher/reports
+    restart: unless-stopped
+
+volumes:
+  reports:

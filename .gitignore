@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Environment & secrets
+.env
+*.env.local
+
+# Tooling / caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.log
+node_modules/
+
+# Runtime artifacts
+reports/
+data/
+*.db
+*.sqlite3
+
+# Metrics / eval telemetry (JSONL fallback + optional MLflow)
+.eval/
+mlruns/
+mlflow.db
+.mlruns/
+mlflow-artifacts/
+
+# Web builds
+web/dist
+web/build
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

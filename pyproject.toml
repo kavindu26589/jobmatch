@@ -1,0 +1,37 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["gateway/src", "app/src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "ASYNC", "RUF"]
+ignore = ["F401"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B008"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["gateway/src", "app/src"]
+namespace_packages = true
+
+[[tool.mypy.overrides]]
+module = ["pypdf", "docx", "typer", "fastapi", "langgraph", "respx", "pydantic_settings"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["gateway/src", "app/src"]
+asyncio_mode = "auto"
+addopts = "-ra --strict-markers"
+markers = [
+    "live: run against real external services (network access, optional keys)",
+]
+
+[tool.coverage.run]
+source = ["gateway", "jobmatcher"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
