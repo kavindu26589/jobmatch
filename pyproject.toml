@@ -23,7 +23,7 @@ ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["gateway/src", "app/src"]
+pythonpath = [".", "gateway/src", "app/src"]
 asyncio_mode = "auto"
 addopts = "-ra --strict-markers"
 markers = [
